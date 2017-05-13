@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'draw works!';
+  str = [];
+  Array;
+  constructor() {
+    this.Array = Array;
+  }
 }
