@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {NormalDrawService} from './modes/normal-draw.service';
-import {ColorChangeService} from "./modes/color-change.service";
+import {ColorChangeService} from "./color-changer/color-change.service";
 
 @Component({
   selector: 'draw-root',

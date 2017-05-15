@@ -12,7 +12,8 @@ import { ConsoleDataService } from './console-display/console-data.service';
 import { CursorService } from './cursor/cursor.service';
 import { ModesManagerComponent } from './modes-manager/modes-manager.component';
 import { NormalDrawService } from './modes/normal-draw.service';
-import { ColorChangeService } from './modes/color-change.service';
+import { ColorChangeService } from './color-changer/color-change.service';
+import { ColorChangerComponent } from './color-changer/color-changer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ColorChangeService } from './modes/color-change.service';
     ConsoleCharComponent,
     ConsoleDisplayComponent,
     CursorComponent,
-    ModesManagerComponent
+    ModesManagerComponent,
+    ColorChangerComponent
   ],
   imports: [
     BrowserModule,
