@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {NormalDrawService} from './modes/normal-draw.service';
+import {ColorChangeService} from "./modes/color-change.service";
 
 @Component({
   selector: 'draw-root',
@@ -7,9 +9,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'draw works!';
-  str = [];
-  Array;
-  constructor() {
-    this.Array = Array;
+  fontwidth = 16;
+  NormalMode;
+  ColorChange;
+  constructor(private normalMode: NormalDrawService, private colorchange: ColorChangeService) {
+    this.NormalMode = normalMode;
+    this.ColorChange = colorchange;
   }
 }

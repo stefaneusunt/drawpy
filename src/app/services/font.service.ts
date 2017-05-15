@@ -27,9 +27,6 @@ export class FontService {
   // Store for all fontsheets possible configurations
   fontsheets = {}; // 'fontwidth_color' -> dataURL Ex.: 8_0 -> data... (for 8px width black fontsheet)
 
-  // State variable that's indicating when the service finished intializing everything
-  ready = false;
-
   constructor() {
     // Finish by generating bold console colors
     for (let i = 0; i < 8; i++) {
@@ -55,7 +52,7 @@ export class FontService {
       Observable.fromEvent(fontsheet, 'load').subscribe(
         () => {
           // When the fontsheet loads we generate each needed color
-          for (let color = 0; color < 15; color++) {
+          for (let color = 0; color < 16; color++) {
             ctx.drawImage(fontsheet, 0, 0);
             const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const pxls = imgData.data;
@@ -72,14 +69,15 @@ export class FontService {
             this.fontsheets[`${fontwidth}_${color}`] = canvas.toDataURL();
           }
         });
+      console.log(typeof 'sdsds');
     }
-
-    // We're ready
-    this.ready = true;
   }
 
   fontsheet(fontwidth: number, color: number) {
     // Return the fontsheet for the requested fontwidth and color configuration
+    if (typeof(fontwidth) === 'string') {
+      fontwidth = parseInt(fontwidth);
+    }
     if (this.fontwidths.indexOf(fontwidth) === -1) {
       throw new RangeError(`No such fontwidth available: ${fontwidth}!`);
     }

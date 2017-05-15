@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CharsService} from '../services/chars.service';
 import {FontService} from '../services/font.service';
 
 @Component({
@@ -13,11 +12,9 @@ export class ConsoleCharComponent implements OnInit {
   @Input() fontwidth: number;
   @Input() fg: number;
   @Input() bg: number;
-  CharsServ;
   FontServ;
 
-  constructor(private charsServ: CharsService, private fontServ: FontService) {
-    this.CharsServ = charsServ;
+  constructor(private fontServ: FontService) {
     this.FontServ = fontServ;
   }
 

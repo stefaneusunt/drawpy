@@ -6,17 +6,21 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ConsoleCharComponent } from './console-char/console-char.component';
 import { FontService } from './services/font.service';
-import { CharsService } from './services/chars.service';
 import { ConsoleDisplayComponent } from './console-display/console-display.component';
 import { CursorComponent } from './cursor/cursor.component';
 import { ConsoleDataService } from './console-display/console-data.service';
+import { CursorService } from './cursor/cursor.service';
+import { ModesManagerComponent } from './modes-manager/modes-manager.component';
+import { NormalDrawService } from './modes/normal-draw.service';
+import { ColorChangeService } from './modes/color-change.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConsoleCharComponent,
     ConsoleDisplayComponent,
-    CursorComponent
+    CursorComponent,
+    ModesManagerComponent
   ],
   imports: [
     BrowserModule,
@@ -25,8 +29,10 @@ import { ConsoleDataService } from './console-display/console-data.service';
   ],
   providers: [
     FontService,
-    CharsService,
-    ConsoleDataService
+    ConsoleDataService,
+    CursorService,
+    NormalDrawService,
+    ColorChangeService
   ],
   bootstrap: [AppComponent]
 })

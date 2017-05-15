@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
+import { ConsoleDataService } from './console-data.service';
 
 @Component({
   selector: 'draw-console-display',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsoleDisplayComponent implements OnInit {
 
-  fontwidth: 16;
+  @Input() fontwidth;
+  Object;
+  CharsServ;
+  parseInt;
+  c;
 
-  constructor() { }
+  constructor(private charsServ: ConsoleDataService) {
+    this.Object = Object;
+    this.CharsServ = charsServ;
+    this.parseInt = parseInt;
+    this.c = console;
+  }
 
   ngOnInit() {
   }

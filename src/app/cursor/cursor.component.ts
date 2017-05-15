@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { CursorService } from './cursor.service';
+import {ConsoleDataService} from "../console-display/console-data.service";
 
 @Component({
   selector: 'draw-cursor',
@@ -8,12 +10,16 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CursorComponent implements OnInit {
 
   @Input() fontwidth;
-  x: 0;
-  y: 0;
+  CursServ;
+  blink_rate = 312; // The time (miliseconds) between cursor blinks
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private cursServ: CursorService, private charsData: ConsoleDataService) {
+    this.CursServ = cursServ;
   }
 
+  ngOnInit() {
+    setInterval(() => {
+      this.cursServ.visible = (this.cursServ.visible + 1) % 2;
+      }, this.blink_rate);
+  }
 }

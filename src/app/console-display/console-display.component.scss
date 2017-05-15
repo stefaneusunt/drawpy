@@ -1,6 +1,6 @@
 .console-display {
   background-color: black;
-  width: 50vw;
+  width: calc(100vw - 16px);
   height: 50vh;
   position: relative;
 }
