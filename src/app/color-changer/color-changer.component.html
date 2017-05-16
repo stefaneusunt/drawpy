@@ -1,3 +1,15 @@
-<p>
-  color-changer works!
-</p>
+<div *ngIf="(color_type === 'foreground' && CCServ.fg_dialog_visible) || (color_type === 'background' && CCServ.bg_dialog_visible)"
+      [style.width.px]="25 * fontwidth + 2 + 2 * padding" [style.padding.px]="padding"
+     class="flex-column border dialog">
+  <span class="title">Choose the {{color_type}} color</span>
+  <hr style="width: 90%; margin-bottom: 0; margin-top: 12px">
+  <div *ngFor="let row of [0, 1]" class="flex-row padding">
+    <div *ngFor="let key of controls[row]; let keyi = index" class="flex-column">
+      <span class="key-label">{{key}}</span>
+      <div class="flex-row border">
+        <draw-console-char *ngFor="let cn of [1,2,3]" [char]="'\u2588'" [fontwidth]="fontwidth"
+                           [fg]="keyi + 8 * row" [bg]="2"></draw-console-char>
+      </div>
+    </div>
+  </div>
+</div>

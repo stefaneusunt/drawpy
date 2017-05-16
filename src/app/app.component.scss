@@ -16,3 +16,11 @@
   border: 1px solid #7a7a7a;
   margin: 5px;
 }
+.relative {
+  position: relative;
+}
+.color-dialog {
+  position: absolute;
+  bottom: 50px;
+  z-index: 3;
+}

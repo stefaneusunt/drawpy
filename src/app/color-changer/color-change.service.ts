@@ -6,17 +6,19 @@ export class ColorChangeService implements DrawMode {
   active = true;
   fg = 7;
   bg = 0;
+  fg_dialog_visible = false;
+  bg_dialog_visible= false;
   constructor() { }
 
   handle(event) {
     const key = event.key;
-    if (key === 'c' && event.getModifierState('Control')) {
+    if (key === 'c' ) {
       event.preventDefault();
-      this.fg = (this.fg + 1) % 16;
+      this.fg_dialog_visible = true;
     }
-    if (key === 'x' && event.getModifierState('Control')) {
+    if (key === 'x') {
       event.preventDefault();
-      this.bg = (this.bg + 1) % 16;
+      this.bg_dialog_visible = true;
     }
   }
 

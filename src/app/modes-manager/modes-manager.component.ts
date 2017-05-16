@@ -1,7 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {CursorService} from '../cursor/cursor.service';
 import {NormalDrawService} from '../modes/normal-draw.service';
-import {ColorChangeService} from "../color-changer/color-change.service";
+import {ColorChangeService} from '../color-changer/color-change.service';
 
 @Component({
   selector: 'draw-modes-manager',
@@ -10,9 +10,10 @@ import {ColorChangeService} from "../color-changer/color-change.service";
 })
 export class ModesManagerComponent implements OnInit {
 
+  savedStatus = {}; // modeServiceName -> active
+
   constructor(private cursServ: CursorService, private normalDrawMode: NormalDrawService,
               private colorChange: ColorChangeService) { }
-
   ngOnInit() {
   }
 
@@ -28,6 +29,25 @@ export class ModesManagerComponent implements OnInit {
       if (this[serv].active) {
         this[serv].handle(event);
       }
+    }
+  }
+  saveStatus() {
+    // Save the active status for all the modes, which can be restored using restoreStatus
+    this.savedStatus = {};
+    for (const serv of Object.keys(this)) {
+      this.savedStatus[serv] = this[serv].active;
+    }
+  }
+  restoreStatus() {
+    // Restore the active status saved from the saveStaus call
+    for (const serv of Object.keys(this)) {
+      this[serv].active = this.savedStatus[serv];
+    }
+  }
+  disableAll() {
+    // Deactivate all modes
+    for (const serv of Object.keys(this)) {
+      this[serv].active = false;
     }
   }
 }

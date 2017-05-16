@@ -25,7 +25,7 @@ export class NormalDrawService implements DrawMode {
       event.preventDefault();
       this.charsServ.remove_char(this.cursServ.x, this.cursServ.y);
     }
-    if (key === 'v' && event.getModifierState('Control')) {
+    if (key === 'v') {
       event.preventDefault();
       this.draw_char_index = (this.draw_char_index + 1) % this.draw_chars.length;
     }
