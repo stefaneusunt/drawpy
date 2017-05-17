@@ -1,4 +1,4 @@
-<div #console class="console-display" (window:resize)="c.log(console.getBoundingClientRect())">
+<div #console class="console-display" (window:resize)="updateSize()">
   <draw-cursor [fontwidth]="fontwidth" ></draw-cursor>
   <draw-console-char *ngFor="let coords of Object.keys(CharsServ.chars)"
                      style="position: absolute"
@@ -10,3 +10,4 @@
                      [style.left.px]="(parseInt(coords.split('_')[0]) + CharsServ.offset[0]) * fontwidth"></draw-console-char>
   <draw-modes-manager></draw-modes-manager>
 </div>
+<p>{{CharsServ.width}}x{{CharsServ.height}}</p>

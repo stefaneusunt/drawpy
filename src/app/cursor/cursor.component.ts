@@ -1,6 +1,6 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CursorService } from './cursor.service';
-import {ConsoleDataService} from "../console-display/console-data.service";
+import { ConsoleDataService } from '../console-display/console-data.service';
 
 @Component({
   selector: 'draw-cursor',

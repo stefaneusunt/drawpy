@@ -2,12 +2,18 @@ import { Injectable } from '@angular/core';
 import { Char } from '../data-models/char';
 
 // This service will hold all the display data(characters with their x, y, color etc)
+// and other info about the console element
 
 @Injectable()
 export class ConsoleDataService {
 
   offset = [0, 0];
   chars: { [pos: string]: Char } = {}; // 'x_y' -> Char
+
+  // The width and height of the console in **characters**
+  width = 0;
+  height = 0;
+
   constructor() { }
 
   xy2str(x, y) {

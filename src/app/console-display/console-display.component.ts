@@ -1,27 +1,42 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit} from '@angular/core';
 import { ConsoleDataService } from './console-data.service';
+import { CursorService } from '../cursor/cursor.service';
 
 @Component({
   selector: 'draw-console-display',
   templateUrl: './console-display.component.html',
   styleUrls: ['./console-display.component.scss']
 })
-export class ConsoleDisplayComponent implements OnInit {
+export class ConsoleDisplayComponent implements OnInit, OnChanges {
 
-  @Input() fontwidth;
+  @Input() fontwidth: number;
   Object;
   CharsServ;
   parseInt;
   c;
 
-  constructor(private charsServ: ConsoleDataService) {
+  constructor(private charsServ: ConsoleDataService, private el: ElementRef,
+              private cursorServ: CursorService) {
     this.Object = Object;
     this.CharsServ = charsServ;
     this.parseInt = parseInt;
     this.c = console;
+
+  }
+  updateSize() {
+    // Updates the width and height of the console (in characters, not pixels)
+    const rect = this.el.nativeElement.firstChild.getBoundingClientRect();
+    [this.charsServ.width,
+      this.charsServ.height] = [Math.floor(rect.width / this.fontwidth),
+                                Math.floor(rect.height / (2 * this.fontwidth))];
+    this.cursorServ.checkCursorOutOfBounds();
   }
 
   ngOnInit() {
+    this.updateSize();
   }
-
+  ngOnChanges() {
+    // When the fontsize changes, the console size will be different
+    this.updateSize();
+  }
 }
