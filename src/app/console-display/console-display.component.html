@@ -1,4 +1,6 @@
-<div #console class="console-display" (window:resize)="updateSize()">
+<div class="console-display" (window:resize)="updateSize()"
+     (contextmenu)="$event.preventDefault();"
+     (mousemove)="updateCursorOnMouseMove($event)">
   <draw-cursor [fontwidth]="fontwidth" ></draw-cursor>
   <draw-console-char *ngFor="let coords of Object.keys(CharsServ.chars)"
                      style="position: absolute"

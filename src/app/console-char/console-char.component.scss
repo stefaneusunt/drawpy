@@ -3,8 +3,9 @@
 }
 .char img {
   margin-top: 0;
+  user-select: none;
 }
 .container {
   display: flex;
-
+  user-select: none;
 }

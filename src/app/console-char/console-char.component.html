@@ -2,7 +2,8 @@
      [style.height.px]="fontwidth * 2"
      style.background-color="rgb({{FontServ.consolecolor2rgb[bg].toString()}})">
   <img [src]="FontServ.fontsheet(fontwidth, fg)"
-       [style.margin-left.px]="(-fontwidth) * FontServ.char2index[char]">
+       [style.margin-left.px]="(-fontwidth) * FontServ.char2index[char]"
+       draggable="false">
 </div>
 
 

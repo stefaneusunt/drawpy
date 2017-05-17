@@ -39,4 +39,16 @@ export class ConsoleDisplayComponent implements OnInit, OnChanges {
     // When the fontsize changes, the console size will be different
     this.updateSize();
   }
+  updateCursorOnMouseMove(event) {
+    //
+    const rect = this.el.nativeElement.getBoundingClientRect();
+    // console.log(this.cursorServ);
+    // console.log(event);
+    // console.log(rect);
+    // console.log(`${event.clientX - rect.left}x${event.clientY - rect.top}`);
+    [this.cursorServ.x,
+      this.cursorServ.y] = [Math.floor((event.clientX - rect.left)/ this.fontwidth),
+                            Math.floor((event.clientY - rect.top) / (2 * this.fontwidth))];
+    this.cursorServ.visible = 1;
+  }
 }

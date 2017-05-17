@@ -1,7 +1,3 @@
-<h1>
-  {{title}}
-</h1>
-<p>Lalalalalalala</p>
 <label>Font size</label>
 <select #sizes (change)="fontwidth = +sizes.value">
   <option value="8">8x16</option>
@@ -11,7 +7,6 @@
   <option value="14">14x28</option>
   <option value="16" selected="selected">16x32</option>
 </select>
-<draw-console-char char="P" [fontwidth]="fontwidth" [fg]="2" [bg]="3" ></draw-console-char>
 <draw-console-display [fontwidth]="fontwidth" ></draw-console-display>
 <div>
   <div class="horizontal-container">
