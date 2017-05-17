@@ -1,36 +1,25 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {CursorService} from '../cursor/cursor.service';
-import {NormalDrawService} from '../modes/normal-draw.service';
-import {ColorChangeService} from '../color-changer/color-change.service';
+import {Component, HostListener} from '@angular/core';
+import {ModesManagerService} from './modes-manager.service';
 
 @Component({
   selector: 'draw-modes-manager',
   template: '',
   styles: ['']
 })
-export class ModesManagerComponent implements OnInit {
 
-  savedStatus = {}; // modeServiceName -> active
+// The only reason this component exists is to capture keys from the webpage and
+// pass them forward to the mode manager service
 
-  constructor(private cursServ: CursorService, private normalDrawMode: NormalDrawService,
-              private colorChange: ColorChangeService) { }
-  ngOnInit() {
+export class ModesManagerComponent {
+  constructor(private modeManager: ModesManagerService) {
   }
 
   @HostListener('window:keydown', ['$event'])
-  handleKeys(event) {
-    //event.preventDefault();
-    //console.log(Object.keys(this));
-    // for (let serv in this) {
-    //   console.log(serv);
-    //}
-    for (const serv of Object.keys(this)) {
-      // We go through all modes and call their handles if they're active
-      if (this[serv].active) {
-        this[serv].handle(event);
-      }
-    }
+  handleKeydown(event) {
+    this.modeManager.handleKey(event);
   }
+}
+  /*
   saveStatus() {
     // Save the active status for all the modes, which can be restored using restoreStatus
     this.savedStatus = {};
@@ -51,3 +40,4 @@ export class ModesManagerComponent implements OnInit {
     }
   }
 }
+*/

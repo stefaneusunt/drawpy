@@ -13,23 +13,34 @@
 </select>
 <draw-console-char char="P" [fontwidth]="fontwidth" [fg]="2" [bg]="3" ></draw-console-char>
 <draw-console-display [fontwidth]="fontwidth" ></draw-console-display>
-<div class="horizontal-container">
-  <div class="inner-container border" >
-    <label>Drawing cursor - v</label>
-    <draw-console-char class="border" [char]="NormalMode.draw_chars[NormalMode.draw_char_index]"
-                       [fontwidth]="16" [fg]="0" [bg]="15" ></draw-console-char>
+<div>
+  <div class="horizontal-container">
+    <label [class.border]="ModesManager['normal_mode'].active" >Normal mode - n</label>
+    <label [class.border]="ModesManager['scrolling_mode'].active" >Scroll mode - m</label>
   </div>
-  <div class="inner-container border relative">
-    <label>Foreground color - c</label>
-    <draw-console-char class="border" [char]="'\u2588'" [fontwidth]="16"
-                       [fg]="ColorChange.fg" bg="1"></draw-console-char>
-    <draw-color-changer [color_type]="'foreground'" class="color-dialog"></draw-color-changer>
-  </div>
-
-  <div class="inner-container border relative">
-    <label>Background color - x</label>
-    <draw-console-char class="border" [char]="'\u2588'" [fontwidth]="16"
-                       [fg]="ColorChange.bg" bg="1"></draw-console-char>
-    <draw-color-changer [color_type]="'background'" class="color-dialog"></draw-color-changer>
+  <div class="horizontal-container">
+    <div class="inner-container border" >
+      <label>Drawing cursor - v</label>
+      <draw-console-char class="border" [char]="NormalMode.draw_chars[NormalMode.draw_char_index]"
+                         [fontwidth]="16" [fg]="0" [bg]="15" ></draw-console-char>
+    </div>
+    <span>+</span>
+    <div class="inner-container border relative">
+      <label>Foreground color - c</label>
+      <draw-console-char class="border" [char]="'\u2588'" [fontwidth]="16"
+                         [fg]="ColorChange.fg" bg="1"></draw-console-char>
+      <draw-color-changer [color_type]="'foreground'" class="color-dialog"></draw-color-changer>
+    </div>
+    <span>+</span>
+    <div class="inner-container border relative">
+      <label>Background color - x</label>
+      <draw-console-char class="border" [char]="'\u2588'" [fontwidth]="16"
+                         [fg]="ColorChange.bg" bg="1"></draw-console-char>
+      <draw-color-changer [color_type]="'background'" class="color-dialog"></draw-color-changer>
+    </div>
+    <span>=</span>
+    <draw-console-char class="border" [char]="NormalMode.getDrawChar()"
+                       [fontwidth]="16" [fg]="ColorChange.fg" [bg]="ColorChange.bg"></draw-console-char>
   </div>
 </div>
+

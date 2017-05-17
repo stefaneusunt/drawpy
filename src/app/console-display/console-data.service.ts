@@ -15,8 +15,9 @@ export class ConsoleDataService {
   }
 
   add_char(x, y, char, fg, bg) {
-    // It's kinda intuitive isn't it
-    this.chars[this.xy2str(x, y)] = {ch: char, fg: fg, bg: bg};
+    // When adding a char the offset must be substracted, not added to the coords
+    const [ox, oy] = this.offset;
+    this.chars[this.xy2str(x - 2 * ox, y - 2 * oy)] = {ch: char, fg: fg, bg: bg};
   }
   get_char(x, y) {
     // Returns the Char object at the requested pos, or undefined if there is none

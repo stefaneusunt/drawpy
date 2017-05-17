@@ -13,11 +13,9 @@ export class ColorChangeService implements DrawMode {
   handle(event) {
     const key = event.key;
     if (key === 'c' ) {
-      event.preventDefault();
       this.fg_dialog_visible = true;
     }
     if (key === 'x') {
-      event.preventDefault();
       this.bg_dialog_visible = true;
     }
   }

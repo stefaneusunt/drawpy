@@ -18,7 +18,7 @@ export class NormalDrawService implements DrawMode {
     const key = event.key;
     if (key === ' ') {
       // We draw a character at the current location
-      this.charsServ.add_char(this.cursServ.x, this.cursServ.y, this.draw_chars[this.draw_char_index],
+      this.charsServ.add_char(this.cursServ.x, this.cursServ.y, this.getDrawChar(),
         this.colorchangeServ.fg, this.colorchangeServ.bg);
     }
     if (key === 'Backspace') {
@@ -29,6 +29,11 @@ export class NormalDrawService implements DrawMode {
       event.preventDefault();
       this.draw_char_index = (this.draw_char_index + 1) % this.draw_chars.length;
     }
+  }
+
+  getDrawChar() {
+    // Return the character that is currently used for drawing
+    return this.draw_chars[this.draw_char_index];
   }
 
 }
