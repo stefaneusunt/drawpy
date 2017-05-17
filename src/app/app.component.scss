@@ -24,6 +24,8 @@
   bottom: 50px;
   z-index: 3;
 }
+$label-padding: 0.65 * 16px;
 label {
-  padding: 0.65em;
+  padding: $label-padding;
+  margin: $label-padding / 2 + 0.75px;
 }

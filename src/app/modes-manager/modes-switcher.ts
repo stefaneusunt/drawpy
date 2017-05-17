@@ -8,7 +8,7 @@ export function handleModesSwitches(modesManager, event) {
       modesManager.deactivateAll();
       modesManager.activate(['scrolling_mode']);
     }
-    if (key === 'n') {
+    if (key === 'n' || key === 'Escape' || key === 'Enter') {
       // Normal mode
       modesManager.deactivateAll();
       modesManager.activate(['normal_mode', 'cursor_movement']);

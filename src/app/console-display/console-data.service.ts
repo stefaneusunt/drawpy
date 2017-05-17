@@ -11,17 +11,12 @@ export class ConsoleDataService {
   constructor() { }
 
   xy2str(x, y) {
-    return `${x + this.offset[0]}_${y + this.offset[1]}`;
+    return `${x - this.offset[0]}_${y - this.offset[1]}`;
   }
 
   add_char(x, y, char, fg, bg) {
     // When adding a char the offset must be substracted, not added to the coords
-    const [ox, oy] = this.offset;
-    this.chars[this.xy2str(x - 2 * ox, y - 2 * oy)] = {ch: char, fg: fg, bg: bg};
-  }
-  get_char(x, y) {
-    // Returns the Char object at the requested pos, or undefined if there is none
-    return this.chars[this.xy2str(x, y)];
+    this.chars[this.xy2str(x, y)] = {ch: char, fg: fg, bg: bg};
   }
   remove_char(x, y) {
     // Removes the char at the given coordinates, does nothing if there is no char at coords
