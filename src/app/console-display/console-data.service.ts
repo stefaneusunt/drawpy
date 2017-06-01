@@ -28,4 +28,12 @@ export class ConsoleDataService {
     // Removes the char at the given coordinates, does nothing if there is no char at coords
     delete this.chars[this.xy2str(x, y)];
   }
+  char_at(x, y) {
+    // Returns whether there is a char at x,y
+    return Boolean(this.chars[this.xy2str(x, y)]);
+    }
+  get_char(x, y): Char {
+    // Return the char at the given coords
+    return this.chars[this.xy2str(x, y)];
+  }
 }

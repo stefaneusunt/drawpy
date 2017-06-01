@@ -9,7 +9,6 @@ import {ModesManagerService} from './modes-manager/modes-manager.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'draw works!';
   fontwidth = 16;
   NormalMode;
   ColorChange;

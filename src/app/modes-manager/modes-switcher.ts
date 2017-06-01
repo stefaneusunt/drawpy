@@ -13,4 +13,8 @@ export function handleModesSwitches(modesManager, event) {
       modesManager.deactivateAll();
       modesManager.activate(['normal_mode', 'cursor_movement']);
     }
+    if (key === 'b') {
+      modesManager.deactivateAll();
+      modesManager.activate(['boxdraw_mode']);
+    }
 }

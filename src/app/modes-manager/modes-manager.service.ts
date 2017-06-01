@@ -4,6 +4,7 @@ import { NormalDrawService } from '../modes/normal-draw.service';
 import { ColorChangeService } from '../color-changer/color-change.service';
 import { ScrollService } from '../modes/scroll.service';
 import { handleModesSwitches } from './modes-switcher';
+import {BoxDrawService} from '../modes/box-draw.service';
 
 @Injectable()
 export class ModesManagerService {
@@ -12,7 +13,7 @@ export class ModesManagerService {
   // activate/deactivate individual modes
   constructor(private cursor_movement: CursorService, private normal_mode: NormalDrawService,
               private colorChange: ColorChangeService,
-              private scrolling_mode: ScrollService) { }
+              private scrolling_mode: ScrollService, private boxdraw_mode: BoxDrawService) { }
 
   handleKey(event) {
     for (const serv of Object.keys(this)) {
