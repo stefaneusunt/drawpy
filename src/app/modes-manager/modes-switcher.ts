@@ -17,4 +17,8 @@ export function handleModesSwitches(modesManager, event) {
       modesManager.deactivateAll();
       modesManager.activate(['boxdraw_mode']);
     }
+    if (key === 't') {
+      modesManager.deactivateAll();
+      modesManager.activate(['text_mode', 'cursor_movement']);
+    }
 }

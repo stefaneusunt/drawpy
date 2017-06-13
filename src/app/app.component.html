@@ -10,9 +10,10 @@
 <draw-console-display [fontwidth]="fontwidth" ></draw-console-display>
 <div>
   <div class="horizontal-container">
-    <label [class.border]="ModesManager['normal_mode'].active" >Normal mode - n</label>
-    <label [class.border]="ModesManager['scrolling_mode'].active" >Scroll mode - m</label>
-    <label [class.border]="ModesManager['boxdraw_mode'].active" >Boxdraw mode - b</label>
+    <label [class.border]="ModesStatus.modes['normal_mode']" >Normal mode - Enter</label>
+    <label [class.border]="ModesStatus.modes['scrolling_mode']" >Scroll - m</label>
+    <label [class.border]="ModesStatus.modes['boxdraw_mode']" >Boxdraw - b</label>
+    <label [class.border]="ModesStatus.modes['text_mode']" >Text - t</label>
   </div>
   <div class="horizontal-container">
     <div class="inner-container border" >

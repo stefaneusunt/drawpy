@@ -3,6 +3,5 @@
  */
 // The model for each Draw Mode service
 export interface DrawMode {
-  active: boolean;
   handle(key: string): any;
 }

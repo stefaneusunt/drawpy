@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {NormalDrawService} from './modes/normal-draw.service';
 import {ColorChangeService} from './color-changer/color-change.service';
-import {ModesManagerService} from './modes-manager/modes-manager.service';
+import {ModesStatusProviderService} from './modes-manager/modes-status-provider.service';
 
 @Component({
   selector: 'draw-root',
@@ -12,10 +12,11 @@ export class AppComponent {
   fontwidth = 16;
   NormalMode;
   ColorChange;
-  ModesManager;
-  constructor(private normalMode: NormalDrawService, private colorchange: ColorChangeService, private modMgr: ModesManagerService) {
+  ModesStatus;
+  constructor(private normalMode: NormalDrawService, private colorchange: ColorChangeService,
+              private modMgr: ModesStatusProviderService) {
     this.NormalMode = normalMode;
     this.ColorChange = colorchange;
-    this.ModesManager = modMgr;
+    this.ModesStatus = modMgr;
   }
 }

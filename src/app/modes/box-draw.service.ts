@@ -78,7 +78,6 @@ function contains_dir(bdir, sdir) {
 @Injectable()
 export class BoxDrawService implements DrawMode {
 
-  active = false;
   constructor(private cursorServ: CursorService, private charsData: ConsoleDataService,
               private colorChange: ColorChangeService) {}
 

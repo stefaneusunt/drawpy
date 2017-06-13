@@ -16,7 +16,10 @@ import { ColorChangeService } from './color-changer/color-change.service';
 import { ColorChangerComponent } from './color-changer/color-changer.component';
 import { ScrollService } from './modes/scroll.service';
 import { ModesManagerService } from './modes-manager/modes-manager.service';
-import {BoxDrawService} from './modes/box-draw.service';
+import { BoxDrawService } from './modes/box-draw.service';
+import { TextService } from './modes/text.service';
+import { ModeSwitcherService } from './modes-manager/mode-switcher.service';
+import { ModesStatusProviderService } from './modes-manager/modes-status-provider.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import {BoxDrawService} from './modes/box-draw.service';
     ColorChangeService,
     ScrollService,
     ModesManagerService,
-    BoxDrawService
+    BoxDrawService,
+    TextService,
+    ModeSwitcherService,
+    ModesStatusProviderService
   ],
   bootstrap: [AppComponent]
 })

@@ -7,7 +7,6 @@ import { ConsoleDataService } from '../console-display/console-data.service';
 @Injectable()
 export class ScrollService implements DrawMode {
 
-  active = false;
   constructor(private consoleData: ConsoleDataService) { }
   handle(event) {
     const key = event.key;
@@ -19,10 +18,10 @@ export class ScrollService implements DrawMode {
       oy++;
     }
     if (key === 'ArrowLeft') {
-      ox--;
+      ox -= 2;
     }
     if (key === 'ArrowRight') {
-      ox++;
+      ox += 2;
     }
     this.consoleData.offset = [ox, oy];
   }

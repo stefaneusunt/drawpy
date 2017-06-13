@@ -8,7 +8,7 @@ import {ColorChangeService} from '../color-changer/color-change.service';
 
 @Injectable()
 export class NormalDrawService implements DrawMode {
-  active = true;
+
   draw_chars = ['\u2588', '\u2593', '\u2592', '\u2591', ' '];
   draw_char_index = 2;
   constructor(private cursServ: CursorService, private charsServ: ConsoleDataService,
