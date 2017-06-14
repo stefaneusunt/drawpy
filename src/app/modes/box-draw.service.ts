@@ -34,11 +34,11 @@ const acs = {
 
 const dir2char = {
   '0000': ' ',
-  '1000': acs.vline,
+  '1000': '\u2575',
   '1100': acs.vline,
-  '0100': acs.vline,
-  '0010': acs.hline,
-  '0001': acs.hline,
+  '0100': '\u2577',
+  '0010': '\u2574',
+  '0001': '\u2576',
   '0011': acs.hline,
   '1001': acs.llcorner,
   '1010': acs.lrcorner,

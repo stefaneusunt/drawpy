@@ -8,7 +8,7 @@ import 'rxjs/add/observable/fromEvent';
 export class FontService {
 
   // The characters present in each fontsheet
-  chars = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~▓┼┴▄█▒─▌└┘├░▐┤┬▀┌┐│';
+  chars = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~▓┼┴▄█▒─▌└┘├░▐┤┬▀┌┐│╷╵╴╶';
   // We need char -> index associations
   char2index = {};
   // Available font widths

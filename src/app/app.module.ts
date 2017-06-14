@@ -20,6 +20,7 @@ import { BoxDrawService } from './modes/box-draw.service';
 import { TextService } from './modes/text.service';
 import { ModeSwitcherService } from './modes-manager/mode-switcher.service';
 import { ModesStatusProviderService } from './modes-manager/modes-status-provider.service';
+import { TextExportComponent } from './exporters/text-export/text-export.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ModesStatusProviderService } from './modes-manager/modes-status-provide
     ConsoleDisplayComponent,
     CursorComponent,
     ModesManagerComponent,
-    ColorChangerComponent
+    ColorChangerComponent,
+    TextExportComponent
   ],
   imports: [
     BrowserModule,
