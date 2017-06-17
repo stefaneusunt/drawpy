@@ -1,10 +1,6 @@
-<div *ngIf="FontServ.fontsheet(fontwidth, fg)!=null" class="char" [style.width.px]="fontwidth"
-     [style.height.px]="fontwidth * 2"
+<div [style.width.px]="fontwidth" [style.height.px]="fontwidth * 2" style="overflow: hidden"
      style.background-color="rgb({{FontServ.consolecolor2rgb[bg].toString()}})">
-  <img [src]="FontServ.fontsheet(fontwidth, fg)"
-       [style.margin-left.px]="(-fontwidth) * FontServ.char2index[char]"
-       draggable="false">
+  <div class="consolefont{{fontwidth}}_{{fg}}"
+       [style.left.px]="(-fontwidth) * FontServ.char2index[char]">
+  </div>
 </div>
-
-
-

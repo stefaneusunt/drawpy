@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { ConsoleCharComponent } from './console-char/console-char.component';
-import { FontService } from './services/font.service';
+import { FontGeneratorService } from './services/font-generator.service';
 import { ConsoleDisplayComponent } from './console-display/console-display.component';
 import { CursorComponent } from './cursor/cursor.component';
 import { ConsoleDataService } from './console-display/console-data.service';
@@ -21,6 +21,8 @@ import { TextService } from './modes/text.service';
 import { ModeSwitcherService } from './modes-manager/mode-switcher.service';
 import { ModesStatusProviderService } from './modes-manager/modes-status-provider.service';
 import { TextExportComponent } from './exporters/text-export/text-export.component';
+import {FontProviderService} from "./services/font-provider.service";
+import {CssInjectorService} from "./console-char/css-injector.service";
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { TextExportComponent } from './exporters/text-export/text-export.compone
     HttpModule
   ],
   providers: [
-    FontService,
+    FontGeneratorService,
     ConsoleDataService,
     CursorService,
     NormalDrawService,
@@ -48,7 +50,9 @@ import { TextExportComponent } from './exporters/text-export/text-export.compone
     BoxDrawService,
     TextService,
     ModeSwitcherService,
-    ModesStatusProviderService
+    ModesStatusProviderService,
+    FontProviderService,
+    CssInjectorService
   ],
   bootstrap: [AppComponent]
 })

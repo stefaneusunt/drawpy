@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FontService} from '../services/font.service';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {FontGeneratorService} from '../services/font-generator.service';
+import {CssInjectorService} from "./css-injector.service";
 
 @Component({
   selector: 'draw-console-char',
@@ -14,10 +15,11 @@ export class ConsoleCharComponent implements OnInit {
   @Input() bg: number;
   FontServ;
 
-  constructor(private fontServ: FontService) {
+  constructor(private fontServ: FontGeneratorService, private el: ElementRef, private cssinj: CssInjectorService) {
     this.FontServ = fontServ;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }

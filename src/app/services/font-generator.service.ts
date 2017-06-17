@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
+import {FontProviderService} from "./font-provider.service";
 
-// This service provides colored font sheets for console chars
+// This service generates colored font sheets for console chars
 
 @Injectable()
-export class FontService {
+export class FontGeneratorService {
 
   // The characters present in each fontsheet
   chars = ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~▓┼┴▄█▒─▌└┘├░▐┤┬▀┌┐│╷╵╴╶';
   // We need char -> index associations
   char2index = {};
-  // Available font widths
-  fontwidths = [8, 10, 11, 12, 14, 16];
   // RGB pairs for terminal colors, the bright ones will be generated in constructor
   consolecolor2rgb = {
     0: [0, 0, 0],
@@ -24,10 +23,8 @@ export class FontService {
     6: [0, 170, 173],
     7: [173, 170, 173]
   };
-  // Store for all fontsheets possible configurations
-  fontsheets = {}; // 'fontwidth_color' -> dataURL Ex.: 8_0 -> data... (for 8px width black fontsheet)
 
-  constructor() {
+  constructor(private fontprovider: FontProviderService) {
     // Finish by generating bold console colors
     for (let i = 0; i < 8; i++) {
       const [r, g, b] = this.consolecolor2rgb[i];
@@ -41,8 +38,12 @@ export class FontService {
       this.char2index[this.chars[i]] = i;
     }
 
+  }
+  generate_fontsheets(callback) {
+    // We generate the fontsheets asyncroniously and then call the callback
+    let progress = 0;
     // Now we genereate a fontsheet for each color and fontwidth
-    for (const fontwidth of this.fontwidths) {
+    for (const fontwidth of this.fontprovider.fontwidths) {
       const canvas = document.createElement('canvas');
       canvas.width = fontwidth * this.chars.length;
       canvas.height = fontwidth * 2;
@@ -66,25 +67,14 @@ export class FontService {
               }
             }
             ctx.putImageData(imgData, 0, 0);
-            this.fontsheets[`${fontwidth}_${color}`] = canvas.toDataURL();
+            this.fontprovider.fontsheets[`${fontwidth}_${color}`] = canvas.toDataURL();
+            progress++;
+          }
+          if (progress === 16 * this.fontprovider.fontwidths.length) {
+            console.log('ready');
+            callback();
           }
         });
-      console.log(typeof 'sdsds');
     }
   }
-
-  fontsheet(fontwidth: number, color: number) {
-    // Return the fontsheet for the requested fontwidth and color configuration
-    if (typeof(fontwidth) === 'string') {
-      fontwidth = parseInt(fontwidth);
-    }
-    if (this.fontwidths.indexOf(fontwidth) === -1) {
-      throw new RangeError(`No such fontwidth available: ${fontwidth}!`);
-    }
-    if (color < 0 || color > 15) {
-      throw new RangeError(`No such font color ${color}!`);
-    }
-    return this.fontsheets[`${fontwidth}_${color}`];
-  }
-
 }
