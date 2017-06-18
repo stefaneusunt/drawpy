@@ -10,7 +10,9 @@ export class ModesStatusProviderService {
     scrolling_mode: false,
     boxdraw_mode: false,
     text_mode: false,
-    mode_switcher: true
+    mode_switcher: true,
+    pixelcursor: false,
+    pixeldraw: false
   };
 
   constructor() { }

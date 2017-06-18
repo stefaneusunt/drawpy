@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { DrawMode } from '../interfaces/draw-mode';
-import {CursorService} from '../cursor/cursor.service';
-import {ConsoleDataService} from '../console-display/console-data.service';
-import {ColorChangeService} from '../color-changer/color-change.service';
+import { CursorService } from '../cursor/cursor.service';
+import { ConsoleDataService } from '../console-display/console-data.service';
+import { ColorChangeService } from '../color-changer/color-change.service';
+import { acs } from '../misc/acs';
 
 // The box drawing mode (drawing stright lines with uncode box drawing characters)
 // We will assume that any box drawing char is made up of 4 directions (segments starting from center):
@@ -17,20 +18,6 @@ import {ColorChangeService} from '../color-changer/color-change.service';
 // We use this convention to make an algorithm to blend them, together when needed
 // Directions will be represented as string of the form udlr (up,down,left,right) made of 0's and 1's
 // Ex: '1111' is ┼
-
-const acs = {
-  hline: '\u2500',
-  vline: '\u2502',
-  ulcorner: '\u250C',
-  urcorner: '\u2510',
-  llcorner: '\u2514',
-  lrcorner: '\u2518',
-  ltee: '\u251C',
-  rtee: '\u2524',
-  ttee: '\u252C',
-  btee: '\u2534',
-  bigplus: '\u253C'
-};
 
 const dir2char = {
   '0000': ' ',

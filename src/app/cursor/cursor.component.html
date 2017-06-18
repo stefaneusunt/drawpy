@@ -1,4 +1,4 @@
-<div *ngIf="CursServ.visible"
+<div *ngIf="CursServ.enabled && CursServ.visible"
      class="cursor"
      [style.top.px]="CursServ.y * fontwidth * 2"
      [style.left.px]="CursServ.x * fontwidth"

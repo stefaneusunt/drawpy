@@ -9,12 +9,12 @@ export class CursorService implements DrawMode {
   x = 0;
   y = 0;
   visible = 1;
+  enabled = true;
   active = true;
   constructor(private consoleData: ConsoleDataService) { }
 
   handle(event) {
     const key = event.key;
-    console.log(key);
     const key2mov = {'ArrowLeft': [-1, 0], 'ArrowRight': [1, 0], 'ArrowUp': [0, -1], 'ArrowDown': [0, 1]};
     if (key.startsWith('Arrow')) {
       // Reset the blink when cursor moves (visibility)
@@ -45,5 +45,6 @@ export class CursorService implements DrawMode {
       this.y = this.consoleData.height - 1;
     }
   }
-
+  disable() { this.enabled = false; }
+  enable()  { this.enabled = true;  }
 }

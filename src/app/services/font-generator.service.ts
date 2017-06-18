@@ -71,7 +71,6 @@ export class FontGeneratorService {
             progress++;
           }
           if (progress === 16 * this.fontprovider.fontwidths.length) {
-            console.log('ready');
             callback();
           }
         });

@@ -9,7 +9,6 @@ export class CssInjectorService {
 
   constructor(private fontGen: FontGeneratorService, private fontProv: FontProviderService) {
     this.fontGen.generate_fontsheets(() => {this.generate_consolefont_css(); });
-    console.log('YEY');
   }
   generate_consolefont_css() {
     // Generate all the css classes from the fontsheets so that the html won't be filled up with copies with each char

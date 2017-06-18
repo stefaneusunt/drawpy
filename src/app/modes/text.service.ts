@@ -4,6 +4,7 @@ import { ConsoleDataService } from '../console-display/console-data.service';
 import { CursorService } from '../cursor/cursor.service';
 import { ColorChangeService } from '../color-changer/color-change.service';
 import {ModesStatusProviderService} from "../modes-manager/modes-status-provider.service";
+import {ControlsService} from "../services/controls.service";
 
 // The mode for typing plain text
 
@@ -11,7 +12,8 @@ import {ModesStatusProviderService} from "../modes-manager/modes-status-provider
 export class TextService implements DrawMode {
 
   constructor(private consoleData: ConsoleDataService, private curs: CursorService,
-              private colors: ColorChangeService, private modesStatus: ModesStatusProviderService) {}
+              private colors: ColorChangeService, private modesStatus: ModesStatusProviderService,
+              private controls: ControlsService) {}
   handle(event) {
     // Just add normal characters to the console and move the cursor to the left after
     const key = event.key;
@@ -41,7 +43,7 @@ export class TextService implements DrawMode {
       // Finally move the cursor if needed
       this.curs.x += ax;
     }
-    if (key === 'Enter') {
+    if (key === this.controls.normal_mode) {
       // We restore the normal mode
       this.modesStatus.normalMode();
     }

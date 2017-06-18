@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DrawMode } from '../interfaces/draw-mode';
+import {ControlsService} from "../services/controls.service";
 
 @Injectable()
 export class ColorChangeService implements DrawMode {
@@ -8,14 +9,14 @@ export class ColorChangeService implements DrawMode {
   bg = 0;
   fg_dialog_visible = false;
   bg_dialog_visible= false;
-  constructor() { }
+  constructor(private  controls: ControlsService) { }
 
   handle(event) {
     const key = event.key;
-    if (key === 'c' ) {
+    if (key === this.controls.fg_change) {
       this.fg_dialog_visible = true;
     }
-    if (key === 'x') {
+    if (key === this.controls.bg_change) {
       this.bg_dialog_visible = true;
     }
   }

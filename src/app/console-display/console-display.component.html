@@ -2,6 +2,7 @@
      (contextmenu)="$event.preventDefault();"
      (mousemove)="updateCursorOnMouseMove($event)">
   <draw-cursor [fontwidth]="fontwidth" ></draw-cursor>
+  <draw-pixel-draw-cursor [fontwidth]="fontwidth"></draw-pixel-draw-cursor>
   <draw-console-char *ngFor="let coords of Object.keys(CharsServ.chars)"
                      style="position: absolute"
                      [char]="CharsServ.chars[coords].ch"

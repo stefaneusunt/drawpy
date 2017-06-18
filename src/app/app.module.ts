@@ -21,8 +21,12 @@ import { TextService } from './modes/text.service';
 import { ModeSwitcherService } from './modes-manager/mode-switcher.service';
 import { ModesStatusProviderService } from './modes-manager/modes-status-provider.service';
 import { TextExportComponent } from './exporters/text-export/text-export.component';
-import {FontProviderService} from "./services/font-provider.service";
-import {CssInjectorService} from "./console-char/css-injector.service";
+import {FontProviderService} from './services/font-provider.service';
+import {CssInjectorService} from './console-char/css-injector.service';
+import {ControlsService} from './services/controls.service';
+import { PixelDrawCursorComponent } from './modes/pixeldraw/pixel-draw-cursor/pixel-draw-cursor.component';
+import {PixelDrawCursorService} from "./modes/pixeldraw/pixel-draw-cursor.service";
+import {PixelDrawModeService} from "./modes/pixeldraw/pixel-draw-mode.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import {CssInjectorService} from "./console-char/css-injector.service";
     CursorComponent,
     ModesManagerComponent,
     ColorChangerComponent,
-    TextExportComponent
+    TextExportComponent,
+    PixelDrawCursorComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,10 @@ import {CssInjectorService} from "./console-char/css-injector.service";
     ModeSwitcherService,
     ModesStatusProviderService,
     FontProviderService,
-    CssInjectorService
+    CssInjectorService,
+    ControlsService,
+    PixelDrawCursorService,
+    PixelDrawModeService
   ],
   bootstrap: [AppComponent]
 })
