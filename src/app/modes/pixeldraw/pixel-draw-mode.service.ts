@@ -41,15 +41,17 @@ export class PixelDrawModeService implements DrawMode {
       }
     }
     // Treat some special cases
-    if (cell[0] === cell[1]) {
-      if (cell[0] !== 0) {
-        // The top and bottom part are the same, we add a full block
-        this.consoleData.add_char(this.pixelcurs.x, this.pixelcurs.y, acs.fullblock, this.colors.fg, 0);
+    if (event.key === this.controls.draw) {
+      if (cell[0] === cell[1]) {
+        if (cell[0] !== 0) {
+          // The top and bottom part are the same, we add a full block
+          this.consoleData.add_char(this.pixelcurs.x, this.pixelcurs.y, acs.fullblock, this.colors.fg, 0);
+        } else {
+          this.consoleData.remove_char(this.pixelcurs.x, this.pixelcurs.y);
+        }
       } else {
-        this.consoleData.remove_char(this.pixelcurs.x, this.pixelcurs.y);
-      }
-    } else {
         this.consoleData.add_char(this.pixelcurs.x, this.pixelcurs.y, acs.uhalfblock, cell[0], cell[1]);
       }
     }
+  }
 }
