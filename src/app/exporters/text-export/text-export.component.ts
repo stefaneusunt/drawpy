@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ConsoleDataService} from "../../console-display/console-data.service";
+import {acs} from "../../misc/acs";
 
 // The component for exporting the drawing as plain text
 
@@ -24,14 +25,24 @@ export class TextExportComponent implements OnInit {
     for (let i = 0; i < h; i++) {
       res.push([]);
       for (let j = 0; j < w; j++) {
-        res[i].push('\u00A0');
+        res[i].push('\u2000');
       }
     }
     console.log(res);
     for (const xy of Object.keys(this.consoleData.chars)) {
       const [x, y] = this.consoleData.str2xy(xy);
+      const char = this.consoleData.get_char(x, y);
+      let ch = char.ch;
+      if (char.ch === acs.uhalfblock) {
+        if (char.fg === 0 && char.bg !== 0) {
+          ch = acs.dhalfblock;
+        }
+        if (char.fg !== 0 && char.bg !== 0) {
+          ch = acs.fullblock;
+        }
+      }
       // if (res[y - h + 1] == undefined) { continue; }
-      res[y - mind[1]][x - mind[0]] = this.consoleData.get_char(x, y).ch;
+      res[y - mind[1]][x - mind[0]] = ch;
     }
     this.content = res.map((x) => x.join('')).join('\n');
   }
