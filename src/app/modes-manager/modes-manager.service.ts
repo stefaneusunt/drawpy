@@ -38,7 +38,7 @@ export class ModesManagerService {
     console.log(key);
     for (const serv of Object.keys(this)) {
       if (this.modesStatus.modes[serv]) {
-        event.preventDefault();
+        // event.preventDefault();
         this[serv].handle(event);
       }
     }

@@ -14,6 +14,7 @@ export class ModesStatusProviderService {
     pixelcursor: false,
     pixeldraw: false
   };
+  saved_modes = {};
 
   constructor() { }
   deactivateAll() {
@@ -44,5 +45,18 @@ export class ModesStatusProviderService {
   normalMode() {
     this.deactivateAll();
     this.activate(['normal_mode', 'cursor_movement', 'color_changer', 'mode_switcher']);
+  }
+
+  saveModesStatus() {
+    this.saved_modes = {};
+    for (const mode in this.modes) {
+      this.saved_modes[mode] = this.modes[mode];
+    }
+  }
+
+  restoreModesStatus() {
+    for (const mode in this.saved_modes) {
+      this.modes[mode] = this.saved_modes[mode];
+    }
   }
 }

@@ -1,44 +1,57 @@
-<label>Font size</label>
-<select #sizes (change)="fontwidth = +sizes.value">
-  <option value="8">8x16</option>
-  <option value="10">10x20</option>
-  <option value="11">11x22</option>
-  <option value="12">12x24</option>
-  <option value="14">14x28</option>
-  <option value="16" selected="selected">16x32</option>
-</select>
-<draw-console-display [fontwidth]="fontwidth" ></draw-console-display>
-<draw-text-export></draw-text-export>
 <div>
-  <div class="horizontal-container">
-    <label [class.border]="ModesStatus.modes['normal_mode']" >Normal mode - Enter</label>
-    <label [class.border]="ModesStatus.modes['scrolling_mode']" >Scroll - m</label>
-    <label [class.border]="ModesStatus.modes['boxdraw_mode']" >Boxdraw - b</label>
-    <label [class.border]="ModesStatus.modes['text_mode']" >Text - t</label>
-    <label [class.border]="ModesStatus.modes['pixeldraw']">Pixeldraw - p</label>
-  </div>
-  <div class="horizontal-container">
-    <div class="inner-container border" >
-      <label>Drawing cursor - v</label>
-      <draw-console-char class="border" [char]="NormalMode.draw_chars[NormalMode.draw_char_index]"
-                         [fontwidth]="16" [fg]="0" [bg]="15" ></draw-console-char>
+  <label>Font size</label>
+  <select #sizes (change)="fontwidth = +sizes.value">
+    <option value="8">8x16</option>
+    <option value="10">10x20</option>
+    <option value="11">11x22</option>
+    <option value="12">12x24</option>
+    <option value="14">14x28</option>
+    <option value="16" selected="selected">16x32</option>
+  </select>
+  <br>
+  <label>Drawing</label>
+  <select #draw (change)="DrawStorage.save_current_draw(); DrawStorage.current_id = draw.value; DrawStorage.load_current_draw()"
+          [value]="DrawStorage.current_id">
+    <option *ngFor="let id of Object.keys(DrawStorage.id2name)" [value]="id">{{DrawStorage.id2name[id]}}</option>
+  </select>
+  <label>Save name</label>
+  <input type="text" [(ngModel)]="DrawStorage.id2name[DrawStorage.current_id]"
+         (focus)="freeze_draw()" (blur)="unfreeze_draw()">
+  <button (click)="DrawStorage.save_current_draw()">Save</button>
+  <button (click)="DrawStorage.new_drawing()" >New drawing</button>
+  <draw-console-display [fontwidth]="fontwidth" ></draw-console-display>
+  <draw-text-export></draw-text-export>
+  <div>
+    <div class="horizontal-container">
+      <label [class.border]="ModesStatus.modes['normal_mode']" >Normal mode - Enter</label>
+      <label [class.border]="ModesStatus.modes['scrolling_mode']" >Scroll - m</label>
+      <label [class.border]="ModesStatus.modes['boxdraw_mode']" >Boxdraw - b</label>
+      <label [class.border]="ModesStatus.modes['text_mode']" >Text - t</label>
+      <label [class.border]="ModesStatus.modes['pixeldraw']">Pixeldraw - p</label>
     </div>
-    <span>+</span>
-    <div class="inner-container border relative">
-      <label>Foreground color - c</label>
-      <draw-console-char class="border" [char]="'\u2588'" [fontwidth]="16"
-                         [fg]="ColorChange.fg" bg="1"></draw-console-char>
-      <draw-color-changer [color_type]="'foreground'" class="color-dialog"></draw-color-changer>
+    <div class="horizontal-container">
+      <div class="inner-container border" >
+        <label>Drawing cursor - v</label>
+        <draw-console-char class="border" [char]="NormalMode.draw_chars[NormalMode.draw_char_index]"
+                           [fontwidth]="16" [fg]="0" [bg]="15" ></draw-console-char>
+      </div>
+      <span>+</span>
+      <div class="inner-container border relative">
+        <label>Foreground color - c</label>
+        <draw-console-char class="border" [char]="'\u2588'" [fontwidth]="16"
+                           [fg]="ColorChange.fg" bg="1"></draw-console-char>
+        <draw-color-changer [color_type]="'foreground'" class="color-dialog"></draw-color-changer>
+      </div>
+      <span>+</span>
+      <div class="inner-container border relative">
+        <label>Background color - x</label>
+        <draw-console-char class="border" [char]="'\u2588'" [fontwidth]="16"
+                           [fg]="ColorChange.bg" bg="1"></draw-console-char>
+        <draw-color-changer [color_type]="'background'" class="color-dialog"></draw-color-changer>
+      </div>
+      <span>=</span>
+      <draw-console-char class="border" [char]="NormalMode.getDrawChar()"
+                         [fontwidth]="16" [fg]="ColorChange.fg" [bg]="ColorChange.bg"></draw-console-char>
     </div>
-    <span>+</span>
-    <div class="inner-container border relative">
-      <label>Background color - x</label>
-      <draw-console-char class="border" [char]="'\u2588'" [fontwidth]="16"
-                         [fg]="ColorChange.bg" bg="1"></draw-console-char>
-      <draw-color-changer [color_type]="'background'" class="color-dialog"></draw-color-changer>
-    </div>
-    <span>=</span>
-    <draw-console-char class="border" [char]="NormalMode.getDrawChar()"
-                       [fontwidth]="16" [fg]="ColorChange.fg" [bg]="ColorChange.bg"></draw-console-char>
   </div>
 </div>

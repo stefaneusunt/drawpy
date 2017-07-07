@@ -41,7 +41,7 @@ export class PixelDrawModeService implements DrawMode {
       }
     }
     // Treat some special cases
-    if (event.key === this.controls.draw) {
+    if (event.key === this.controls.draw || event.key === 'Backspace') {
       if (cell[0] === cell[1]) {
         if (cell[0] !== 0) {
           // The top and bottom part are the same, we add a full block

@@ -23,7 +23,6 @@ export class NormalDrawService implements DrawMode {
         this.colorchangeServ.fg, this.colorchangeServ.bg);
     }
     if (key === 'Backspace') {
-      event.preventDefault();
       this.charsServ.remove_char(this.cursServ.x, this.cursServ.y);
     }
     if (key === 'v') {

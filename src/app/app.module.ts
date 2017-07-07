@@ -27,6 +27,7 @@ import {ControlsService} from './services/controls.service';
 import { PixelDrawCursorComponent } from './modes/pixeldraw/pixel-draw-cursor/pixel-draw-cursor.component';
 import {PixelDrawCursorService} from "./modes/pixeldraw/pixel-draw-cursor.service";
 import {PixelDrawModeService} from "./modes/pixeldraw/pixel-draw-mode.service";
+import {DrawingsStorageService} from "./services/drawings-storage.service";
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import {PixelDrawModeService} from "./modes/pixeldraw/pixel-draw-mode.service";
     CssInjectorService,
     ControlsService,
     PixelDrawCursorService,
-    PixelDrawModeService
+    PixelDrawModeService,
+    DrawingsStorageService
   ],
   bootstrap: [AppComponent]
 })
