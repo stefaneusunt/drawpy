@@ -1,0 +1,5 @@
+<div *ngIf="PixelCurs.enabled && PixelCurs.visible" style="background-color: white; position: absolute; z-index: 2"
+     [style.width.px]="fontwidth" [style.height.px]="fontwidth"
+     [style.top.px]="PixelCurs.y * 2 *fontwidth + ((PixelCurs.up+ 1) % 2 * fontwidth)"
+     [style.left.px]="PixelCurs.x * fontwidth">
+</div>

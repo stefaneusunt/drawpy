@@ -1,0 +1,9 @@
+.console-display {
+  background-color: black;
+  width: calc(100vw - 16px);
+  height: calc(100vh - 12em);
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  cursor: none;
+}

@@ -1,0 +1,7 @@
+<div *ngIf="CursServ.enabled && CursServ.visible"
+     class="cursor"
+     [style.top.px]="CursServ.y * fontwidth * 2"
+     [style.left.px]="CursServ.x * fontwidth"
+     [style.width.px]="fontwidth"
+     [style.height.px]="fontwidth * 2">
+</div>

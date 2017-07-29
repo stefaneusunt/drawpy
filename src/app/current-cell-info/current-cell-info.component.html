@@ -1,0 +1,15 @@
+<span class="container">
+  <span>
+    Current cell info:
+  </span>
+  <span *ngIf="CharServ.char_at(Cursor.x, Cursor.y)" class="container">
+    <span>FG: </span>
+    <draw-console-colored-block [termcolor]="CharServ.get_char(Cursor.x, Cursor.y).fg"></draw-console-colored-block>
+    <span>BG: </span>
+    <draw-console-colored-block [termcolor]="CharServ.get_char(Cursor.x, Cursor.y).bg"></draw-console-colored-block>
+    <span>Char: </span>
+    <draw-console-char *ngFor="let i of [1, 2]" [fg]="0" [bg]="15" [fontwidth]="8"
+                      [char]="CharServ.get_char(Cursor.x, Cursor.y).ch"
+                      style="position: relative; top: -2px;"></draw-console-char>
+  </span>
+</span>

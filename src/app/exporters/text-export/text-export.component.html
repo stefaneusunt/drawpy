@@ -1,0 +1,8 @@
+<button (click)="visible = true; perform_export()" >Export as plain text</button>
+<div *ngIf="visible" class="modal">
+  <div class="dialog">
+    <button (click)="visible = false" class="close-button">x</button>
+    <p>Plain text export</p>
+    <textarea readonly [value]="content"></textarea>
+  </div>
+</div>

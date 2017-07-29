@@ -1,0 +1,6 @@
+<div [style.width.px]="fontwidth" [style.height.px]="fontwidth * 2" style="overflow: hidden"
+     style.background-color="rgb({{FontServ.consolecolor2rgb[bg].toString()}})">
+  <div class="consolefont{{fontwidth}}_{{fg}}"
+       [style.left.px]="(-fontwidth) * FontServ.char2index[char]">
+  </div>
+</div>

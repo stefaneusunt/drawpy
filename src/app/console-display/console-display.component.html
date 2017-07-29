@@ -1,0 +1,15 @@
+<div class="console-display" (window:resize)="updateSize()"
+     (contextmenu)="$event.preventDefault();"
+     (mousemove)="updateCursorOnMouseMove($event)">
+  <draw-cursor [fontwidth]="fontwidth" ></draw-cursor>
+  <draw-pixel-draw-cursor [fontwidth]="fontwidth"></draw-pixel-draw-cursor>
+  <draw-console-char *ngFor="let coords of Object.keys(CharsServ.chars)"
+                     style="position: absolute"
+                     [char]="CharsServ.chars[coords].ch"
+                     [fontwidth]="fontwidth"
+                     [fg]="CharsServ.chars[coords].fg"
+                     [bg]="CharsServ.chars[coords].bg"
+                     [style.top.px]="(parseInt(coords.split('_')[1]) + CharsServ.offset[1]) * fontwidth * 2"
+                     [style.left.px]="(parseInt(coords.split('_')[0]) + CharsServ.offset[0]) * fontwidth"></draw-console-char>
+  <draw-modes-manager></draw-modes-manager>
+</div>
