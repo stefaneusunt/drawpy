@@ -1,6 +1,6 @@
 .modal {
   z-index: 3;
-  background-color: rgba(0,0,0,0.56);
+  background-color: rgba(0, 0, 0, 0.56);
   position: fixed;
   top: 0;
   left: 0;
@@ -17,6 +17,7 @@ $button-size: 50px;
   background-color: white;
   position: relative;
 }
+
 .close-button {
   position: absolute;
   background-color: white;
@@ -25,9 +26,11 @@ $button-size: 50px;
   height: $button-size;
   right: 0;
 }
+
 .close-button:hover {
   background-color: #dcdcdc;
 }
+
 textarea {
   position: absolute;
   top: $button-size;
@@ -35,6 +38,7 @@ textarea {
   width: calc(#{$dialog-size}vw - 10px);
   height: calc(#{$dialog-size}vh - 60px);
 }
+
 p {
   position: absolute;
   left: 1em;
